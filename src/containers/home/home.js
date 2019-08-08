@@ -1,12 +1,14 @@
 import React from 'react';
 
-const Home = () => {
+import { Link } from 'react-router-dom';
 
-  return (
-    <>
-      <h1>Home</h1>
-    </>
-  );
-};
+import { Container } from 'Styles/layout';
+
+const Home = () => (
+  <Container>
+    <h1 className="pt-4">Home</h1>
+    <Link to="/page-1">Page 1</Link>
+  </Container>
+);
 
 export default Home;

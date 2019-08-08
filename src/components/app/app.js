@@ -13,17 +13,17 @@ const load = Component => props => (
 );
 
 const Home = load(lazy(() => import('Containers/home/home')));
+const Page1 = load(lazy(() => import('Containers/page-1/page-1')));
 
-export const App = () => {
-  return (
-    <>
-      <GlobalStyle />
-      <Router basename={window.appSubfolder}>
-        <Route path="/" exact component={Home} />
-      </Router>
-    </>
-  );
-};
+export const App = () => (
+  <>
+    <GlobalStyle />
+    <Router basename={window.appSubfolder}>
+      <Route path="/" exact component={Home} />
+      <Route path="/page-1" exact component={Page1} />
+    </Router>
+  </>
+);
 
 App.propTypes = {};
 
