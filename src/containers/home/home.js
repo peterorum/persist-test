@@ -7,7 +7,7 @@ import { Container } from 'Styles/layout';
 const Home = () => (
   <Container>
     <h1 className="pt-4">Home</h1>
-    <Link to="/page-1">Page 1</Link>
+    <Link to="/page-1">Name entry</Link>
   </Container>
 );
 
