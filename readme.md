@@ -1,3 +1,6 @@
-# React project to test persisting redux while using immer, plus some other odds 'n ends.
+# Utility classes for styled components
+## POC project
 
-* Includes css utility classes using styled components.
+* See src/styles/global-styles.js
+
+* Also includes persisting redux which uses immer.
