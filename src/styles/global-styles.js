@@ -59,7 +59,7 @@ ${Object.keys(spacers)
 ${Object.keys(spacers)
   .map(
     i =>
-      `.{breakpoint}${shortcut}b$-${i}{ ${attribute}-bottom: ${spacers[i]}rem;}`,
+      `.${breakpoint}${shortcut}b-${i}{ ${attribute}-bottom: ${spacers[i]}rem;}`,
   )
   .join(' ')}
 ${Object.keys(spacers)
@@ -92,20 +92,24 @@ ${Object.keys(spacers)
 
 const createFlex = breakpoint =>
   `
+  .${breakpoint}d-none {
+    display: none;
+  }
+
   .${breakpoint}d-flex {
-    display: flex
+    display: flex;
   }
 
   .${breakpoint}d-block {
-    display: block
+    display: block;
   }
 
   .${breakpoint}d-inline {
-    display: inline
+    display: inline;
   }
 
   .${breakpoint}d-inline-block {
-    display: inline-block
+    display: inline-block;
   }
 
   .${breakpoint}flex-row {
@@ -132,15 +136,15 @@ const createFlex = breakpoint =>
     flex-wrap: nowrap;
   }
 
-  .${breakpoint}justify-content-between {
+  .${breakpoint}justify-between {
     justify-content:space-between;
   }
 
-  .${breakpoint}justify-content-start {
+  .${breakpoint}justify-start {
     justify-content:flex-start;
   }
 
-  .${breakpoint}justify-content-end {
+  .${breakpoint}justify-end {
     justify-content:flex-end;
   }
 
@@ -153,6 +157,10 @@ const createFlex = breakpoint =>
   }
   .${breakpoint}align-content-end {
     align-content:flex-end;
+  }
+
+  .${breakpoint}align-items-stretch {
+    align-items:stretch;
   }
 
   .${breakpoint}align-items-start {
@@ -177,6 +185,66 @@ const createFlex = breakpoint =>
     align-self:flex-end;
   }
 `;
+
+// images
+
+const createImages = breakpoint =>
+  `
+  .${breakpoint}img-responsive {
+    max-width: 100%;
+  }
+
+  .${breakpoint}img-height-full {
+    height: 100%;
+  }
+
+  .${breakpoint}img-height-auto {
+    height: auto;
+  }
+
+  .${breakpoint}img-cover {
+    object-fit: cover;
+  }
+
+  .${breakpoint}img-contain {
+    object-fit: contain;
+  }
+`;
+
+// widths
+
+const createWidths = breakpoint =>
+  `
+  .${breakpoint}w-100 {
+    width: 100%;
+  }
+
+  .${breakpoint}w-25 {
+    width: 25%;
+  }
+
+  .${breakpoint}w-33 {
+    width: 33.33333%;
+  }
+
+  .${breakpoint}w-50 {
+    width: 50%;
+  }
+
+  .${breakpoint}w-66 {
+    width: 66.666667%;
+  }
+
+  .${breakpoint}w-75 {
+    width: 75%;
+  }
+
+  .${breakpoint}w-100 {
+    width: 100%;
+  }
+`;
+
+// styles
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -203,6 +271,8 @@ export const GlobalStyle = createGlobalStyle`
       ${createSpacing('padding', 'p', b.prefix)}
       ${createSpacing('margin', 'm', b.prefix)}
       ${createFlex(b.prefix)}
+      ${createImages(b.prefix)}
+      ${createWidths(b.prefix)}
     }`,
   )}
 
@@ -211,4 +281,5 @@ export const GlobalStyle = createGlobalStyle`
   input {
     padding: 0.5rem;
   }
+
 `;

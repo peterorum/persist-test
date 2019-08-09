@@ -20,7 +20,7 @@ const Page1 = () => {
         <div className="pt-4">Home</div>
       </Link>
       <div className="d-flex flex-column">
-        <h1>Page 1</h1>
+        <h1>Persist entry</h1>
         <div className="my-3">
           First name:{' '}
           <input

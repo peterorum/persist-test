@@ -13,14 +13,16 @@ const load = Component => props => (
 );
 
 const Home = load(lazy(() => import('Containers/home/home')));
-const Page1 = load(lazy(() => import('Containers/page-1/page-1')));
+const Persist = load(lazy(() => import('Containers/persist/persist')));
+const Flex = load(lazy(() => import('Containers/flex/flex')));
 
 export const App = () => (
   <>
     <GlobalStyle />
     <Router basename={window.appSubfolder}>
       <Route path="/" exact component={Home} />
-      <Route path="/page-1" exact component={Page1} />
+      <Route path="/persist" exact component={Persist} />
+      <Route path="/flex" exact component={Flex} />
     </Router>
   </>
 );
