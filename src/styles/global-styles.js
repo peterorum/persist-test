@@ -18,19 +18,19 @@ const breakpoints = [
     width: 0,
   },
   {
-    prefix: 'sm:',
+    prefix: 'sm-',
     width: 576,
   },
   {
-    prefix: 'md:',
+    prefix: 'md-',
     width: 768,
   },
   {
-    prefix: 'lg:',
+    prefix: 'lg-',
     width: 992,
   },
   {
-    prefix: 'xl:',
+    prefix: 'xl-',
     width: 1200,
   },
 ];
