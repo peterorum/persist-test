@@ -43,7 +43,12 @@ const breakpoints = [
 // shortcut is p, m
 // breakpoint is md, lg...
 
-// generate all variations eg .p-0, .lg:mt-4, .mt-n4
+// generate all variations
+// eg
+// .p-0 no padding
+// .lg:mt-4 large screen margin-top 24px
+// .mt-n3 negative margin margin-top -16px
+// .my-auto margin left & right auto
 
 const createSpacingSigned = (
   attribute,
