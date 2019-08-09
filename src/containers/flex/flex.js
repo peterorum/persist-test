@@ -7,7 +7,7 @@ import { Container } from 'Styles/layout';
 
 const ImageContainer = styled.div``;
 
-const Page1 = () => (
+const Flex = () => (
   <Container>
     <Link to="/">
       <div className="pt-4">Home</div>
@@ -47,4 +47,4 @@ const Page1 = () => (
   </Container>
 );
 
-export default Page1;
+export default Flex;
