@@ -43,7 +43,7 @@ const breakpoints = [
 // shortcut is p, m
 // breakpoint is md, lg...
 
-// generate all variations eg .p-0, .lg-mt-4, .mt-n4
+// generate all variations eg .p-0, .lg:mt-4, .mt-n4
 
 const createSpacingSigned = (
   attribute,
