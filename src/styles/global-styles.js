@@ -43,50 +43,89 @@ const breakpoints = [
 // shortcut is p, m
 // breakpoint is md, lg...
 
-// generate all variations eg .p-0, .lg-mt-4
+// generate all variations eg .p-0, .lg-mt-4, .mt-n4
 
-const createSpacing = (attribute, shortcut, breakpoint) =>
+const createSpacingSigned = (
+  attribute,
+  shortcut,
+  breakpoint,
+  sign,
+  signPrefix,
+) =>
   `
 ${Object.keys(spacers)
-  .map(i => `.${breakpoint}${shortcut}-${i}{ ${attribute}: ${spacers[i]}rem;}`)
-  .join(' ')}
-${Object.keys(spacers)
   .map(
     i =>
-      `.${breakpoint}${shortcut}t-${i}{ ${attribute}-top: ${spacers[i]}rem;}`,
+      `.${breakpoint}${shortcut}-${signPrefix}${i}{ ${attribute}: ${sign *
+        spacers[i]}rem;}`,
   )
   .join(' ')}
+
 ${Object.keys(spacers)
   .map(
     i =>
-      `.${breakpoint}${shortcut}b-${i}{ ${attribute}-bottom: ${spacers[i]}rem;}`,
+      `.${breakpoint}${shortcut}t-${signPrefix}${i}{ ${attribute}-top: ${sign *
+        spacers[i]}rem;}`,
   )
   .join(' ')}
+
 ${Object.keys(spacers)
   .map(
     i =>
-      `.${breakpoint}${shortcut}l-${i}{ ${attribute}-left: ${spacers[i]}rem;}`,
+      `.${breakpoint}${shortcut}b-${signPrefix}${i}{ ${attribute}-bottom: ${sign *
+        spacers[i]}rem;}`,
   )
   .join(' ')}
+
 ${Object.keys(spacers)
   .map(
     i =>
-      `.${breakpoint}${shortcut}r-${i}{ ${attribute}-right: ${spacers[i]}rem;}`,
+      `.${breakpoint}${shortcut}l-${signPrefix}${i}{ ${attribute}-left: ${sign *
+        spacers[i]}rem;}`,
   )
   .join(' ')}
+
 ${Object.keys(spacers)
   .map(
     i =>
-      `.${breakpoint}${shortcut}x-${i}{ ${attribute}-left: ${spacers[i]}rem; ${attribute}-right: ${spacers[i]}rem;}`,
+      `.${breakpoint}${shortcut}r-${signPrefix}${i}{ ${attribute}-right: ${sign *
+        spacers[i]}rem;}`,
   )
   .join(' ')}
+
 ${Object.keys(spacers)
   .map(
     i =>
-      `.${breakpoint}${shortcut}y-${i}{ ${attribute}-top: ${spacers[i]}rem; ${attribute}-bottom: ${spacers[i]}rem;}`,
+      `.${breakpoint}${shortcut}x-${signPrefix}${i}{ ${attribute}-left: ${sign *
+        spacers[i]}rem; ${attribute}-right: ${sign * spacers[i]}rem;}`,
+  )
+  .join(' ')}
+
+${Object.keys(spacers)
+  .map(
+    i =>
+      `.${breakpoint}${shortcut}y-${signPrefix}${i}{ ${attribute}-top: ${sign *
+        spacers[i]}rem; ${attribute}-bottom: ${sign * spacers[i]}rem;}`,
   )
   .join(' ')}
 `;
+
+const createSpacingAuto = (attribute, shortcut, breakpoint) =>
+  `
+    .${breakpoint}${shortcut}-auto{ ${attribute}: auto;}
+    .${breakpoint}${shortcut}t-auto{ ${attribute}-top: auto;}
+    .${breakpoint}${shortcut}b-auto{ ${attribute}-bottom: auto;}
+    .${breakpoint}${shortcut}l-auto{ ${attribute}-left: auto;}
+    .${breakpoint}${shortcut}r-auto{ ${attribute}-right: auto;}
+    .${breakpoint}${shortcut}x-auto{ ${attribute}-left: auto;${attribute}-right: auto;}
+    .${breakpoint}${shortcut}y-auto{ ${attribute}-top: auto;${attribute}-bottom: auto;}
+    `;
+
+const createSpacing = (attribute, shortcut, breakpoint) => `
+  ${createSpacingSigned(attribute, shortcut, breakpoint, 1, '')}
+  ${createSpacingSigned(attribute, shortcut, breakpoint, -1, 'n')}
+  ${createSpacingAuto(attribute, shortcut, breakpoint)}
+  `;
 
 // flex
 
@@ -211,14 +250,10 @@ const createImages = breakpoint =>
   }
 `;
 
-// widths
+// width & height
 
-const createWidths = breakpoint =>
+const createDimensions = breakpoint =>
   `
-  .${breakpoint}w-100 {
-    width: 100%;
-  }
-
   .${breakpoint}w-25 {
     width: 25%;
   }
@@ -242,6 +277,113 @@ const createWidths = breakpoint =>
   .${breakpoint}w-100 {
     width: 100%;
   }
+
+  .${breakpoint}mw-25 {
+    max-width: 25%;
+  }
+
+  .${breakpoint}mw-33 {
+    max-width: 33.33333%;
+  }
+
+  .${breakpoint}mw-50 {
+    max-width: 50%;
+  }
+
+  .${breakpoint}mw-66 {
+    max-width: 66.666667%;
+  }
+
+  .${breakpoint}mw-75 {
+    max-width: 75%;
+  }
+
+  .${breakpoint}mw-100 {
+    max-width: 100%;
+  }
+
+  .${breakpoint}h-25 {
+    height 25%;
+  }
+
+  .${breakpoint}h-33 {
+    height 33.33333%;
+  }
+
+  .${breakpoint}h-50 {
+    height 50%;
+  }
+
+  .${breakpoint}h-66 {
+    height 66.666667%;
+  }
+
+  .${breakpoint}h-75 {
+    height 75%;
+  }
+
+  .${breakpoint}h-100 {
+    height 100%;
+  }
+
+  .${breakpoint}mh-25 {
+    max-height: 25%;
+  }
+
+  .${breakpoint}mh-33 {
+    max-height: 33.33333%;
+  }
+
+  .${breakpoint}mh-50 {
+    max-height: 50%;
+  }
+
+  .${breakpoint}mh-66 {
+    max-height: 66.666667%;
+  }
+
+  .${breakpoint}mh-75 {
+    max-height: 75%;
+  }
+
+  .${breakpoint}mh-100 {
+    max-height: 100%;
+  }
+
+`;
+
+// typography
+
+const createTypography = breakpoint =>
+  `
+  .${breakpoint}text-left {
+    text-align: left;
+  }
+
+  .${breakpoint}text-center {
+    text-align: center;
+  }
+
+  .${breakpoint}text-right {
+    text-align: right;
+  }
+
+  .${breakpoint}text-bold {
+    font-weight: bold;
+  }
+
+  .${breakpoint}text-normal {
+    font-weight: normal;
+  }
+
+  .${breakpoint}text-lowercase {
+    text-transform: lowercase;
+  }
+
+  .${breakpoint}text-uppercase {
+    text-transform: uppercase;
+  }
+
 `;
 
 // styles
@@ -272,7 +414,8 @@ export const GlobalStyle = createGlobalStyle`
       ${createSpacing('margin', 'm', b.prefix)}
       ${createFlex(b.prefix)}
       ${createImages(b.prefix)}
-      ${createWidths(b.prefix)}
+      ${createDimensions(b.prefix)}
+      ${createTypography(b.prefix)}
     }`,
   )}
 

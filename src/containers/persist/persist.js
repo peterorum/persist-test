@@ -21,7 +21,7 @@ const Page1 = () => {
       </Link>
       <div className="d-flex flex-column">
         <h1>Persist entry</h1>
-        <div className="my-3">
+        <div className="my-3 text-bold">
           First name:{' '}
           <input
             type="text"
@@ -31,7 +31,7 @@ const Page1 = () => {
             }
           />
         </div>
-        <div className="my-3">
+        <div className="my-3 text-bold">
           Last name:{' '}
           <input
             type="text"
