@@ -19,26 +19,28 @@ const Page1 = () => {
       <Link to="/">
         <div className="pt-4">Home</div>
       </Link>
-      <h1>Page 1</h1>
-      <div className="my-3">
-        First name:{' '}
-        <input
-          type="text"
-          value={customer.name.firstName}
-          onChange={e =>
-            dispatch(setFirstName({ firstName: e.currentTarget.value }))
-          }
-        />
-      </div>
-      <div className="my-3">
-        Last name:{' '}
-        <input
-          type="text"
-          value={customer.name.lastName}
-          onChange={e =>
-            dispatch(setLastName({ lastName: e.currentTarget.value }))
-          }
-        />
+      <div className="d-flex flex-column">
+        <h1>Page 1</h1>
+        <div className="my-3">
+          First name:{' '}
+          <input
+            type="text"
+            value={customer.name.firstName}
+            onChange={e =>
+              dispatch(setFirstName({ firstName: e.currentTarget.value }))
+            }
+          />
+        </div>
+        <div className="my-3">
+          Last name:{' '}
+          <input
+            type="text"
+            value={customer.name.lastName}
+            onChange={e =>
+              dispatch(setLastName({ lastName: e.currentTarget.value }))
+            }
+          />
+        </div>
       </div>
     </Container>
   );
