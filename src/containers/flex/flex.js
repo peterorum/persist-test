@@ -41,7 +41,6 @@ const Page1 = () => (
               </div>
             </div>
           </div>
-          <div className="debug">xxx</div>
         </ImageContainer>
       </div>
     </div>
