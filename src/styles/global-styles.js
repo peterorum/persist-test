@@ -18,19 +18,19 @@ const breakpoints = [
     width: 0,
   },
   {
-    prefix: 'sm-',
+    prefix: 'sm\\:',
     width: 576,
   },
   {
-    prefix: 'md-',
+    prefix: 'md\\:',
     width: 768,
   },
   {
-    prefix: 'lg-',
+    prefix: 'lg\\:',
     width: 992,
   },
   {
-    prefix: 'xl-',
+    prefix: 'xl\\:',
     width: 1200,
   },
 ];
@@ -43,7 +43,7 @@ const breakpoints = [
 // shortcut is p, m
 // breakpoint is md, lg...
 
-// generate all variations eg .p-0, .lg-mt-4, .mt-n4
+// generate all variations eg .p-0, .lg:mt-4, .mt-n4
 
 const createSpacingSigned = (
   attribute,
@@ -424,5 +424,4 @@ export const GlobalStyle = createGlobalStyle`
   input {
     padding: 0.5rem;
   }
-
 `;
