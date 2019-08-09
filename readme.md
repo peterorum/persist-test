@@ -3,4 +3,4 @@
 
 * See src/styles/global-styles.js
 
-* Also includes persisting redux which uses immer.
+* Also includes persisting a redux store which uses immer.
