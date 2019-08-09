@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-const levels = [0, 1, 2, 3, 4, 5];
-const factors = [0, 0.25, 0.5, 1, 1.5, 3];
+const spacers = [0, 0.25, 0.5, 1, 1.5, 3];
 
 // 0: 0
 // 1: 4px
@@ -31,34 +30,40 @@ export const GlobalStyle = createGlobalStyle`
 
   // padding eg p-3
 
-  ${levels.map(i => `.p-${i}{ padding: ${factors[i]}rem;}`)}
-  ${levels.map(i => `.pt-${i}{ padding-top: ${factors[i]}rem;}`)}
-  ${levels.map(i => `.pb-${i}{ padding-bottom: ${factors[i]}rem;}`)}
-  ${levels.map(i => `.pl-${i}{ padding-left: ${factors[i]}rem;}`)}
-  ${levels.map(i => `.pr-${i}{ padding-right: ${factors[i]}rem;}`)}
-  ${levels.map(
-    i =>
-      `.px-${i}{ padding-left: ${factors[i]}rem; padding-right: ${factors[i]}rem;}`,
+  ${Object.keys(spacers).map(i => `.p-${i}{ padding: ${spacers[i]}rem;}`)}
+  ${Object.keys(spacers).map(i => `.pt-${i}{ padding-top: ${spacers[i]}rem;}`)}
+  ${Object.keys(spacers).map(
+    i => `.pb-${i}{ padding-bottom: ${spacers[i]}rem;}`,
   )}
-  ${levels.map(
+  ${Object.keys(spacers).map(i => `.pl-${i}{ padding-left: ${spacers[i]}rem;}`)}
+  ${Object.keys(spacers).map(
+    i => `.pr-${i}{ padding-right: ${spacers[i]}rem;}`,
+  )}
+  ${Object.keys(spacers).map(
     i =>
-      `.py-${i}{ padding-top: ${factors[i]}rem; padding-bottom: ${factors[i]}rem;}`,
+      `.px-${i}{ padding-left: ${spacers[i]}rem; padding-right: ${spacers[i]}rem;}`,
+  )}
+  ${Object.keys(spacers).map(
+    i =>
+      `.py-${i}{ padding-top: ${spacers[i]}rem; padding-bottom: ${spacers[i]}rem;}`,
   )}
 
   // margin
 
-  ${levels.map(i => `.m-${i}{ margin: ${factors[i]}rem;}`)}
-  ${levels.map(i => `.mt-${i}{ margin-top: ${factors[i]}rem;}`)}
-  ${levels.map(i => `.mb-${i}{ margin-bottom: ${factors[i]}rem;}`)}
-  ${levels.map(i => `.ml-${i}{ margin-left: ${factors[i]}rem;}`)}
-  ${levels.map(i => `.mr-${i}{ margin-right: ${factors[i]}rem;}`)}
-  ${levels.map(
-    i =>
-      `.mx-${i}{ margin-left: ${factors[i]}rem; margin-right: ${factors[i]}rem;}`,
+  ${Object.keys(spacers).map(i => `.m-${i}{ margin: ${spacers[i]}rem;}`)}
+  ${Object.keys(spacers).map(i => `.mt-${i}{ margin-top: ${spacers[i]}rem;}`)}
+  ${Object.keys(spacers).map(
+    i => `.mb-${i}{ margin-bottom: ${spacers[i]}rem;}`,
   )}
-  ${levels.map(
+  ${Object.keys(spacers).map(i => `.ml-${i}{ margin-left: ${spacers[i]}rem;}`)}
+  ${Object.keys(spacers).map(i => `.mr-${i}{ margin-right: ${spacers[i]}rem;}`)}
+  ${Object.keys(spacers).map(
     i =>
-      `.my-${i}{ margin-top: ${factors[i]}rem; margin-bottom: ${factors[i]}rem;}`,
+      `.mx-${i}{ margin-left: ${spacers[i]}rem; margin-right: ${spacers[i]}rem;}`,
+  )}
+  ${Object.keys(spacers).map(
+    i =>
+      `.my-${i}{ margin-top: ${spacers[i]}rem; margin-bottom: ${spacers[i]}rem;}`,
   )}
 
   // forms
