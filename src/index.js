@@ -4,12 +4,15 @@ import '@babel/polyfill';
 
 import { Provider } from 'react-redux';
 import { createStore, compose } from 'redux';
+import throttle from 'lodash/throttle';
 
 import rootReducer from 'Redux/reducers';
 
 import App from 'Components/app/app';
 
 import './index.css';
+
+import { loadState, saveState } from 'Redux/persist/persist';
 
 /* eslint-disable no-underscore-dangle */
 
@@ -25,7 +28,22 @@ const composeEnhancers =
 const enhancer = composeEnhancers();
 // other store enhancers if any
 
-export const store = createStore(rootReducer, enhancer);
+const persistedState = loadState();
+
+export const store = createStore(rootReducer, persistedState, enhancer);
+
+store.subscribe(
+  throttle(() => {
+    // only save specified states
+    const { customer } = store.getState();
+
+    saveState({
+      customer,
+    });
+  }, 1000),
+);
+
+// hot module replacement
 
 if (module.hot) {
   module.hot.accept('Redux/reducers', () => {

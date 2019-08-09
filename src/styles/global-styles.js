@@ -61,4 +61,9 @@ export const GlobalStyle = createGlobalStyle`
       `.my-${i}{ margin-top: ${factors[i]}rem; margin-bottom: ${factors[i]}rem;}`,
   )}
 
+  // forms
+
+  input {
+    padding: 0.5rem;
+  }
 `;
