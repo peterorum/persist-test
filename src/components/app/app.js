@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import '@babel/polyfill';
 
 import 'sanitize.css';
+import 'Styles/css-utilities.css';
 
 import { GlobalStyle } from 'Styles/global-styles';
 
